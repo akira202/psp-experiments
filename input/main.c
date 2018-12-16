@@ -35,10 +35,7 @@ int main()
 
 		if(buttonInput.Buttons != 0)
 		{
-			if(buttonInput.Buttons & PSP_CTRL_START){
-									printf("Start");
-									running = 0;
-			}
+			if(buttonInput.Buttons & PSP_CTRL_START)	printf("Start");
 			if(buttonInput.Buttons & PSP_CTRL_SELECT)	printf("Select");
             if(buttonInput.Buttons & PSP_CTRL_UP)		printf("Up");
 			if(buttonInput.Buttons & PSP_CTRL_DOWN)		printf("Down");
