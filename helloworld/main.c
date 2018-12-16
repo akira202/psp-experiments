@@ -1,11 +1,13 @@
 #include <pspkernel.h>
 #include <pspdebug.h>
 #include <pspdisplay.h>
+#include <pspkerneltypes.h>
+#include <pspctrl.h>
 
 #include "../common/callback.h"
 
-#define VERS    1 //Talk about this
-#define REVS    0
+#define VERS 1 //Talk about this
+#define REVS 0
 
 PSP_MODULE_INFO("Hello World", PSP_MODULE_USER, VERS, REVS);
 PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER);
@@ -17,14 +19,23 @@ int main()
 {
 	pspDebugScreenInit();
 	setupExitCallback();
-
-	while(isRunning())
+	while (isRunning())
 	{
+
 		pspDebugScreenSetXY(0, 0);
-		printf("Hello World!");
+		pspDebugScreenSetTextColor(0x43ff00);
+
+		printf("\n");
+		printf(" #####  #  #  #  ####   #####\n");
+		printf(" #   #  # #   #  #   #  #   #\n");
+		printf(" #####  ##    #  ####   #####\n");
+		printf(" #   #  # #   #  #   #  #   #\n");
+		printf(" #   #  #  #  #  #   #  #   #\n\n");
+
+		printf("\n");
+
 		sceDisplayWaitVblankStart();
 	}
-
 	sceKernelExitGame();
 	return 0;
 }
