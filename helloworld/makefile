@@ -1,19 +1,23 @@
-TARGET		= hello_world
-OBJS		= main.o ../common/callback.o
+TARGET = Tutorial
 
-INCDIR		=
-CFLAGS		= -G0 -Wall -O2
-CXXFLAGS	= $(CFLAGS) -fno-exceptions -fno-rtti
-ASFLAGS	= $(CFLAGS)
+OBJS = test.o
 
-LIBDIR		=
-LDFLAGS	=
-LIBS		= -lm
+INCDIR = ../include
+CFLAGS = -G0 -Wall -O2
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS)
 
-BUILD_PRX = 1 
+LIBDIR = ../lib
+LDFLAGS = 
+LIBS= -lpsprtc -lpspsdk
 
-EXTRA_TARGETS	= EBOOT.PBP
-PSP_EBOOT_TITLE= Hello World
 
-PSPSDK	= $(shell psp-config --pspsdk-path)
+EXTRA_TARGETS = EBOOT.PBP
+PSP_EBOOT_TITLE = Tutorial1
+PSP_FW_VERSION=500
+
+PSP_LARGE_MEMORY = 0
+BUILD_PRX = 1
+
+PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak

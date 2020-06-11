@@ -6,7 +6,7 @@
 
 #include "../common/callback.h"
 
-#define VERS 1 //Talk about this
+#define VERS 1
 #define REVS 0
 
 PSP_MODULE_INFO("Hello World", PSP_MODULE_USER, VERS, REVS);
@@ -26,12 +26,7 @@ int main()
 		pspDebugScreenSetTextColor(0x43ff00);
 
 		printf("\n");
-		printf(" #####  #  #  #  ####   #####\n");
-		printf(" #   #  # #   #  #   #  #   #\n");
-		printf(" #####  ##    #  ####   #####\n");
-		printf(" #   #  # #   #  #   #  #   #\n");
-		printf(" #   #  #  #  #  #   #  #   #\n\n");
-
+		printf("tofu 2020")
 		printf("\n");
 
 		sceDisplayWaitVblankStart();
