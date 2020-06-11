@@ -1,6 +1,6 @@
-TARGET = Tutorial
+TARGET = HelloWorld
 
-OBJS = test.o
+OBJS = main.o ../common/callback.o
 
 INCDIR = ../include
 CFLAGS = -G0 -Wall -O2
@@ -11,9 +11,8 @@ LIBDIR = ../lib
 LDFLAGS = 
 LIBS= -lpsprtc -lpspsdk
 
-
 EXTRA_TARGETS = EBOOT.PBP
-PSP_EBOOT_TITLE = Tutorial1
+PSP_EBOOT_TITLE = HelloWorld
 PSP_FW_VERSION=500
 
 PSP_LARGE_MEMORY = 0

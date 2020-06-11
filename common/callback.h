@@ -1,7 +1,15 @@
-#ifndef COMMON_CALLBACK_H
-#define COMMON_CALLBACK_H
+#ifndef common_callbacks_h
+#define common_callbacks_h
 
-int isRunning();
-int setupExitCallback();
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int running();
+int setupCallbacks(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

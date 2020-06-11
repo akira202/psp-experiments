@@ -1,40 +1,46 @@
 #include <pspkernel.h>
+#include <pspdisplay.h>
+#include <pspdebug.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <time.h>
 
 static int exitRequest = 0;
 
-int isRunning() 
-{ 
-	return !exitRequest; 
+int running()
+{
+	return !exitRequest;
 }
 
-int exitCallback(int arg1, int arg2, void *common) 
-{ 
-	exitRequest = 1; 
-	return 0; 
+int exitCallback(int arg1, int arg2, void *common)
+{
+	exitRequest = 1;
+	return 0;
 }
 
-int callbackThread(SceSize args, void *argp) 
-{ 
-	int callbackID;
+int callbackThread(SceSize args, void *argp)
+{
+	int cbid;
 
-	callbackID = sceKernelCreateCallback("Exit Callback", exitCallback, NULL); 
-	sceKernelRegisterExitCallback(callbackID);
+	cbid = sceKernelCreateCallback("Exit Callback", exitCallback, NULL);
+	sceKernelRegisterExitCallback(cbid);
 
 	sceKernelSleepThreadCB();
 
-	return 0; 
+	return 0;
 }
 
-int setupExitCallback() 
-{ 
-	int threadID = 0;
+int setupCallbacks(void)
+{
+	int thid = 0;
 
-	threadID = sceKernelCreateThread("Callback Update Thread", callbackThread, 0x11, 0xFA0, THREAD_ATTR_USER, 0); 
-	 
-	if(threadID >= 0) 
-	{ 
-		sceKernelStartThread(threadID, 0, 0); 
+	thid = sceKernelCreateThread("update_thread", callbackThread, 0x11, 0xFA0, 0, 0);
+	if(thid >= 0)
+	{
+		sceKernelStartThread(thid, 0, 0);
 	}
 
-	return threadID; 
+	return thid;
 }
